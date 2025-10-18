@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Security & Risk Management — E-Portfolio</title>
+  <meta name="description" content="An e-portfolio documenting learning across 12 units in Security and Risk Management, including outcomes and activities." />
+
+  <style>
+    :root{
+      --bg: #0f172a;        /* slate-900 */
+      --panel:#0b122a;      /* slightly brighter panel */
+      --text:#e5e7eb;       /* gray-200 */
+      --muted:#94a3b8;      /* slate-400 */
+      --accent:#38bdf8;     /* sky-400 */
+      --accent-2:#22d3ee;   /* cyan-300 */
+      --ring: 0 0 0 .25rem rgb(56 189 248 / .3);
+      --radius: 14px;
+      --shadow: 0 8px 30px rgb(2 8 23 / .35);
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#ffffff;
+        --panel:#f8fafc;   /* slate-50 */
+        --text:#0f172a;    /* slate-900 */
+        --muted:#475569;   /* slate-600 */
+        --accent:#0369a1;  /* sky-800 */
+        --accent-2:#0ea5e9;/* sky-500 */
+        --shadow: 0 8px 30px rgb(15 23 42 / .1);
+      }
+    }
+
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 10% -10%, rgba(56,189,248,.15), transparent 60%),
+                  radial-gradient(1000px 700px at 120% 10%, rgba(34,211,238,.15), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      line-height:1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .wrap{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+
+    .skip-link{
+      position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+    }
+    .skip-link:focus{left:16px; top:16px; width:auto; height:auto; padding:8px 12px; background:#000; color:#fff; border-radius:8px}
+
+    header.hero{
+      background: linear-gradient(180deg, rgba(2,6,23,.0), rgba(2,6,23,.25)), var(--panel);
+      border: 1px solid rgba(148,163,184,.15);
+      box-shadow: var(--shadow);
+      border-radius: calc(var(--radius) + 6px);
+      padding: 28px;
+    }
+    .title{
+      margin:0 0 10px;
+      font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.6rem);
+      letter-spacing:.2px;
+    }
+    .lead{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, .94rem + .4vw, 1.15rem);
+    }
+
+    nav.toc{
+      position: sticky; top: 12px;
+      background: linear-gradient(180deg, rgba(2,6,23,.0), rgba(2,6,23,.15)), var(--panel);
+      border: 1px solid rgba(148,163,184,.15);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      margin: 18px 0 28px;
+    }
+    .toc h2{margin:0 0 10px; font-size:1.05rem}
+    .toc a{
+      display:inline-block;
+      margin: 6px 10px 6px 0;
+      padding: 6px 10px;
+      text-decoration:none;
+      color: var(--text);
+      border-radius: 999px;
+      border:1px solid rgba(148,163,184,.25);
+    }
+    .toc a:hover, .toc a:focus{
+      outline:none; box-shadow: var(--ring); border-color: transparent;
+    }
+
+    main{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    section.unit{
+      background: var(--panel);
+      border: 1px solid rgba(148,163,184,.15);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+    }
+    section.unit h3{
+      margin: 0 0 6px;
+      font-size: clamp(1.15rem, 1rem + .6vw, 1.45rem);
+    }
+    .unit small{
+      color: var(--muted);
+    }
+
+    .grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 12px;
+    }
+    @media (min-width: 820px){
+      .grid{
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(2,6,23,.0), rgba(2,6,23,.12));
+      border: 1px solid rgba(148,163,184,.18);
+      border-radius: calc(var(--radius) - 4px);
+      padding: 14px 16px;
+    }
+    .card h4{
+      display:flex; align-items:center; gap:8px;
+      margin:0 0 8px; font-size:1rem; letter-spacing:.2px
+    }
+    .card h4 .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, var(--accent-2), var(--accent));
+      box-shadow: 0 0 0 3px rgba(56,189,248,.18), 0 0 16px rgba(34,211,238,.35) inset;
+    }
+
+    ul{margin: 0; padding-left: 18px}
+    li{margin: 6px 0}
+    hr.sep{
+      border:0; height:1px; margin: 22px 0 8px;
+      background: linear-gradient(90deg, transparent, rgba(148,163,184,.35), transparent);
+    }
+
+    .top{
+      display:inline-block; margin-top:14px; text-decoration:none;
+      border:1px dashed rgba(148,163,184,.35);
+      padding:6px 10px; border-radius:999px; color:var(--muted)
+    }
+    .top:hover, .top:focus{border-style:solid; color:var(--text); box-shadow: var(--ring); outline: none}
+
+    footer{
+      margin-top: 38px; color: var(--muted); text-align:center; font-size:.95rem
+    }
+
+    /* Print */
+    @media print{
+      nav.toc{position:static; box-shadow:none}
+      .wrap{padding: 0}
+      .unit{break-inside: avoid}
+      body{background:#fff}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <div class="wrap">
+    <header class="hero" role="banner">
+      <h1 class="title">Security and Risk Management</h1>
+      <p class="lead">
+        This e-portfolio documents my learning journey in <strong>Security and Risk Management</strong>.
+        Each unit includes the module title, learning outcomes, and activities/assignments.
+      </p>
+    </header>
+
+    <nav class="toc" aria-label="Table of contents">
+      <h2>Units</h2>
+      <div>
+        <a href="#unit-1">1</a>
+        <a href="#unit-2">2</a>
+        <a href="#unit-3">3</a>
+        <a href="#unit-4">4</a>
+        <a href="#unit-5">5</a>
+        <a href="#unit-6">6</a>
+        <a href="#unit-7">7</a>
+        <a href="#unit-8">8</a>
+        <a href="#unit-9">9</a>
+        <a href="#unit-10">10</a>
+        <a href="#unit-11">11</a>
+        <a href="#unit-12">12</a>
+      </div>
+    </nav>
+
+    <main id="content" role="main" aria-describedby="page-desc">
+      <p id="page-desc" class="visually-hidden" hidden>
+        Twelve units with learning outcomes and activities. Use the Units navigation to jump to a section.
+      </p>
+
+      <!-- Unit 1 -->
+      <section id="unit-1" class="unit" aria-labelledby="u1">
+        <h3 id="u1">Unit 1: An Introduction to Security and Risk Management</h3>
+        <small>Foundations of risk and professional roles</small>
+        <div class="grid">
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Learning Outcomes</h4>
+            <ul>
+              <li>Discuss the various definitions of risk.</li>
+              <li>Explain how to assess, qualify and mitigate risks.</li>
+              <li>Identify the roles and responsibilities of security professionals.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Activities / Assignments</h4>
+            <ul>
+              <li><strong>Reflection:</strong> Write a short piece discussing the balance between strong security measures and maintaining business agility.</li>
+              <li><strong>Assignment:</strong> Analyse a case study of a company’s security posture and identify strengths and weaknesses.</li>
+            </ul>
+          </article>
+        </div>
+        <a class="top" href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Back to top</a>
+      </section>
+
+      <!-- Unit 2 -->
+      <section id="unit-2" class="unit" aria-labelledby="u2">
+        <h3 id="u2">Unit 2: Users, Assessments and the Risk Management Process</h3>
+        <small>People, assessments, and lifecycle</small>
+        <div class="grid">
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Learning Outcomes</h4>
+            <ul>
+              <li>Recognise the role of users in the security and risk management lifecycle.</li>
+              <li>Understand different approaches to security assessments.</li>
+              <li>Apply the steps of the risk management process to practical scenarios.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Activities / Assignments</h4>
+            <ul>
+              <li><strong>Exercise:</strong> Conduct a basic risk assessment for a given IT system.</li>
+              <li><strong>Reflection:</strong> Discuss how user behaviour can either strengthen or weaken an organisation’s security posture.</li>
+              <li><strong>Assignment:</strong> Prepare a short report on the stages of the risk management process with a real-world example.</li>
+            </ul>
+          </article>
+        </div>
+        <a class="top" href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Back to top</a>
+      </section>
+
+      <!-- Unit 3 -->
+      <section id="unit-3" class="unit" aria-labelledby="u3">
+        <h3 id="u3">Unit 3: Introduction to Threat Modelling and Management</h3>
+        <small>Core threat modelling concepts</small>
+        <div class="grid">
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Learning Outcomes</h4>
+            <ul>
+              <li>Understand the concept and importance of threat modelling.</li>
+              <li>Identify common threat modelling methodologies (e.g., STRIDE, PASTA).</li>
+              <li>Explain how threat models inform security decision-making.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Activities / Assignments</h4>
+            <ul>
+              <li><strong>Exercise:</strong> Apply the STRIDE framework to a sample web application.</li>
+              <li><strong>Reflection:</strong> Compare different threat modelling methodologies and discuss their strengths and weaknesses.</li>
+              <li><strong>Assignment:</strong> Create a simple threat model diagram for an online banking system.</li>
+            </ul>
+          </article>
+        </div>
+        <a class="top" href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Back to top</a>
+      </section>
+
+      <!-- Unit 4 -->
+      <section id="unit-4" class="unit" aria-labelledby="u4">
+        <h3 id="u4">Unit 4: Application of Threat Modelling and Management Techniques</h3>
+        <small>Technique application and prioritisation</small>
+        <div class="grid">
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Learning Outcomes</h4>
+            <ul>
+              <li>Apply different threat modelling techniques to real-world systems.</li>
+              <li>Evaluate and prioritise threats based on risk and likelihood.</li>
+              <li>Recommend appropriate mitigation strategies.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Activities / Assignments</h4>
+            <ul>
+              <li><strong>Case Study:</strong> Develop a threat model for a cloud-based service.</li>
+              <li><strong>Exercise:</strong> Rank identified threats by impact and likelihood.</li>
+              <li><strong>Assignment:</strong> Write a report suggesting mitigations for top-ranked threats.</li>
+            </ul>
+          </article>
+        </div>
+        <a class="top" href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Back to top</a>
+      </section>
+
+      <!-- Unit 5 -->
+      <section id="unit-5" class="unit" aria-labelledby="u5">
+        <h3 id="u5">Unit 5: An Introduction to Security and Risk Standards in Industry and the Enterprise</h3>
+        <small>Standards overview and strategy</small>
+        <div class="grid">
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Learning Outcomes</h4>
+            <ul>
+              <li>Understand the role of standards in ensuring compliance and best practice.</li>
+              <li>Identify key standards (e.g., ISO 27001, NIST, PCI DSS).</li>
+              <li>Explain how industry standards impact enterprise security strategy.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Activities / Assignments</h4>
+            <ul>
+              <li><strong>Research Task:</strong> Compare two major industry standards (e.g., ISO 27001 vs. NIST CSF).</li>
+              <li><strong>Reflection:</strong> Discuss how adopting a standard benefits or constrains an enterprise.</li>
+              <li><strong>Assignment:</strong> Create a summary table of key industry security standards.</li>
+            </ul>
+          </article>
+        </div>
+        <a class="top" href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Back to top</a>
+      </section>
+
+      <!-- Unit 6 -->
+      <section id="unit-6" class="unit" aria-labelledby="u6">
+        <h3 id="u6">Unit 6: The Practical Implications of Security and Risk Standards</h3>
+        <small>Implementation, certification, and auditing</small>
+        <div class="grid">
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Learning Outcomes</h4>
+            <ul>
+              <li>Assess the challenges of implementing security standards in practice.</li>
+              <li>Understand certification and auditing processes.</li>
+              <li>Analyze case studies of compliance successes and failures.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Activities / Assignments</h4>
+            <ul>
+              <li><strong>Case Study Review:</strong> Explore a company fined for non-compliance.</li>
+              <li><strong>Exercise:</strong> Create an audit checklist for ISO 27001 compliance.</li>
+              <li><strong>Assignment:</strong> Discuss practical issues in aligning business processes with regulatory standards.</li>
+            </ul>
+          </article>
+        </div>
+        <a class="top" href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Back to top</a>
+      </section>
+
+      <!-- Unit 7 -->
+      <section id="unit-7" class="unit" aria-labelledby="u7">
+        <h3 id="u7">Unit 7: An Introduction to the Concepts of Quantitative Risk Modelling</h3>
+        <small>Qualitative vs quantitative, probability & impact</small>
+        <div class="grid">
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Learning Outcomes</h4>
+            <ul>
+              <li>Understand the difference between qualitative and quantitative risk assessment.</li>
+              <li>Learn basic concepts of probability and impact in risk modelling.</li>
+              <li>Apply simple quantitative models to assess risk.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Activities / Assignments</h4>
+            <ul>
+              <li><strong>Exercise:</strong> Calculate risk values using likelihood × impact formulas.</li>
+              <li><strong>Reflection:</strong> Compare qualitative vs. quantitative risk models.</li>
+              <li><strong>Assignment:</strong> Create a simple risk matrix for a sample IT system.</li>
+            </ul>
+          </article>
+        </div>
+        <a class="top" href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Back to top</a>
+      </section>
+
+      <!-- Unit 8 -->
+      <section id="unit-8" class="unit" aria-labelledby="u8">
+        <h3 id="u8">Unit 8: Implementing Quantitative Risk Models</h3>
+        <small>Techniques, interpretation, limitations</small>
+        <div class="grid">
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Learning Outcomes</h4>
+            <ul>
+              <li>Implement quantitative risk assessment techniques (e.g., Monte Carlo simulations, sensitivity analysis).</li>
+              <li>Interpret and communicate quantitative risk results.</li>
+              <li>Evaluate the limitations of quantitative models.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Activities / Assignments</h4>
+            <ul>
+              <li><strong>Exercise:</strong> Build a basic risk model in Excel or Python.</li>
+              <li><strong>Assignment:</strong> Conduct a quantitative risk analysis on a sample case study.</li>
+              <li><strong>Reflection:</strong> Discuss when quantitative models are most useful.</li>
+            </ul>
+          </article>
+        </div>
+        <a class="top" href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Back to top</a>
+      </section>
+
+      <!-- Unit 9 -->
+      <section id="unit-9" class="unit" aria-labelledby="u9">
+        <h3 id="u9">Unit 9: Risk, Business Continuity and Disaster Recovery</h3>
+        <small>Continuity planning & DR alignment</small>
+        <div class="grid">
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Learning Outcomes</h4>
+            <ul>
+              <li>Understand the relationship between risk, continuity planning, and disaster recovery.</li>
+              <li>Identify key elements of business continuity plans (BCP) and disaster recovery plans (DRP).</li>
+              <li>Analyze how risk informs continuity strategies.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Activities / Assignments</h4>
+            <ul>
+              <li><strong>Exercise:</strong> Draft a BCP outline for a small business.</li>
+              <li><strong>Case Study:</strong> Evaluate the disaster recovery plan of a real-world incident.</li>
+              <li><strong>Assignment:</strong> Write a continuity strategy that aligns with risk findings.</li>
+            </ul>
+          </article>
+        </div>
+        <a class="top" href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Back to top</a>
+      </section>
+
+      <!-- Unit 10 -->
+      <section id="unit-10" class="unit" aria-labelledby="u10">
+        <h3 id="u10">Unit 10: Practical Applications and Issues in DR Implementations</h3>
+        <small>Execution challenges & lessons learned</small>
+        <div class="grid">
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Learning Outcomes</h4>
+            <ul>
+              <li>Identify common challenges in DR plan execution.</li>
+              <li>Evaluate different DR strategies (e.g., hot site, cold site, cloud-based recovery).</li>
+              <li>Assess post-disaster lessons learned.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Activities / Assignments</h4>
+            <ul>
+              <li><strong>Exercise:</strong> Compare costs and benefits of different DR solutions.</li>
+              <li><strong>Assignment:</strong> Analyze a failed DR implementation and propose improvements.</li>
+              <li><strong>Reflection:</strong> Discuss the human and organizational issues in DR planning.</li>
+            </ul>
+          </article>
+        </div>
+        <a class="top" href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Back to top</a>
+      </section>
+
+      <!-- Unit 11 -->
+      <section id="unit-11" class="unit" aria-labelledby="u11">
+        <h3 id="u11">Unit 11: Future Trends in Security and Risk Management</h3>
+        <small>Emerging tech, zero trust, supply chain</small>
+        <div class="grid">
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Learning Outcomes</h4>
+            <ul>
+              <li>Identify emerging trends in SRM (e.g., AI in cybersecurity, zero trust, supply chain risks).</li>
+              <li>Evaluate the impact of technological innovation on risk management practices.</li>
+              <li>Predict challenges enterprises may face in the next decade.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Activities / Assignments</h4>
+            <ul>
+              <li><strong>Research Task:</strong> Investigate a current emerging SRM trend.</li>
+              <li><strong>Assignment:</strong> Write a short paper on how AI may change threat detection.</li>
+              <li><strong>Reflection:</strong> Discuss the risks of over-reliance on automation in security.</li>
+            </ul>
+          </article>
+        </div>
+        <a class="top" href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Back to top</a>
+      </section>
+
+      <!-- Unit 12 -->
+      <section id="unit-12" class="unit" aria-labelledby="u12">
+        <h3 id="u12">Unit 12: The Great Debate — Most Influential SRM Trend (Next 5 Years)</h3>
+        <small>Argumentation and perspective-taking</small>
+        <div class="grid">
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Learning Outcomes</h4>
+            <ul>
+              <li>Critically evaluate multiple perspectives on future SRM trends.</li>
+              <li>Defend a position on the most influential future development.</li>
+              <li>Communicate and justify arguments effectively.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4><span class="dot" aria-hidden="true"></span>Activities / Assignments</h4>
+            <ul>
+              <li><strong>Debate Prep:</strong> Select and research one SRM trend (e.g., quantum computing, IoT security).</li>
+              <li><strong>Assignment:</strong> Write an argumentative essay predicting the most influential SRM trend in the next 5 years.</li>
+              <li><strong>Activity:</strong> Participate in a class or written debate with peers.</li>
+            </ul>
+          </article>
+        </div>
+        <a class="top" href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Back to top</a>
+      </section>
+
+      <hr class="sep" aria-hidden="true" />
+      <footer role="contentinfo">
+        © <span id="year"></span> Security &amp; Risk Management — E-Portfolio
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Set current year in footer and enable smooth hash scrolling
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('a[href^="#unit-"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if(el){
+          e.preventDefault();
+          el.scrollIntoView({behavior:'smooth', block:'start'});
+          history.pushState(null, '', id);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
