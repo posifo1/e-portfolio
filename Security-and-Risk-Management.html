@@ -6,12 +6,6 @@
     <title>Security & Risk Management | E‑Portfolio</title>
     <meta name="description" content="E‑portfolio documenting learning across Security & Risk Management units: threat modelling, risk standards, BC/DR, quantitative risk, and future trends." />
 
-    <!-- Open Graph for richer shares -->
-    <meta property="og:title" content="Security & Risk Management | E‑Portfolio" />
-    <meta property="og:description" content="My learning journey through security and risk management: units, outcomes, reflections, and artefacts." />
-    <meta property="og:type" content="website" />
-
-    <!-- Fonts (optional and lightweight) -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
 
@@ -41,7 +35,6 @@
         }
       }
 
-      /* Base */
       html { scroll-behavior: smooth; }
       * { box-sizing: border-box; }
       body {
@@ -53,129 +46,41 @@
         line-height: 1.65;
       }
 
-      .container {
-        width: min(1100px, 92vw);
-        margin: 0 auto;
-        padding: 24px 0 96px;
-      }
+      .container { width: min(1100px, 92vw); margin: 0 auto; padding: 24px 0 96px; }
 
-      /* Header / Hero */
-      header {
-        position: relative;
-        padding: 32px 0 8px;
-        text-align: center;
-      }
-      .site-title {
-        font-size: clamp(28px, 5vw, 44px);
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        margin: 0 0 8px;
-      }
-      .intro {
-        margin: 0 auto;
-        color: var(--muted);
-        font-size: clamp(14px, 2vw, 16px);
-        max-width: 72ch;
-      }
+      header { position: relative; padding: 32px 0 8px; text-align: center; }
+      .site-title { font-size: clamp(28px, 5vw, 44px); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 8px; }
+      .intro { margin: 0 auto; color: var(--muted); font-size: clamp(14px, 2vw, 16px); max-width: 72ch; }
 
-      /* Cards */
-      .card {
-        background: linear-gradient(180deg, var(--surface), var(--surface-2));
-        border: 1px solid rgba(255,255,255,0.06);
-        border-radius: var(--card-radius);
-        box-shadow: var(--shadow);
-        padding: clamp(16px, 3vw, 24px);
-      }
+      .card { background: linear-gradient(180deg, var(--surface), var(--surface-2)); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--card-radius); box-shadow: var(--shadow); padding: clamp(16px, 3vw, 24px); }
 
-      /* Centered, sticky TOC card */
-      .toc.card {
-        position: sticky;
-        top: 0;
-        z-index: 30;
-        margin: 28px 0;
-        text-align: center;
-        backdrop-filter: saturate(140%) blur(6px);
-        background: color-mix(in oklab, var(--surface), transparent 20%);
-        border: 1px solid rgba(255,255,255,0.10);
-        transition: box-shadow .2s ease, transform .2s ease;
-      }
-      .toc.card.stuck {
-        box-shadow: 0 12px 28px rgba(0,0,0,.28);
-        transform: translateZ(0);
-      }
+      /* Centered, non-sticky TOC card */
+      .toc.card { margin: 28px 0; text-align: center; }
       .toc h2 { margin-top: 0; font-size: 18px; letter-spacing: .2px; }
-      .toc a {
-        display: inline-block;
-        padding: 8px 10px;
-        text-decoration: none;
-        color: var(--text);
-        border-radius: 10px;
-        font-size: 15px;
-        margin: 0 2px;
-      }
-      .toc a:hover, .toc a[aria-current="true"] {
-        background: rgba(124,98,255,0.14);
-        outline: none;
-      }
+      .toc a { display: inline-block; padding: 8px 10px; text-decoration: none; color: var(--text); border-radius: 10px; font-size: 15px; margin: 0 2px; }
+      .toc a:hover, .toc a[aria-current="true"] { background: rgba(124,98,255,0.14); outline: none; }
 
-      /* Section styles + automatic numbered badges */
       main { display: block; counter-reset: unit; }
       section[id^="unit-"] { counter-increment: unit; }
       section + section { margin-top: 18px; }
-      section h2 {
-        margin: 0 0 8px;
-        font-size: clamp(20px, 3.5vw, 26px);
-        display: inline-flex; align-items: center; gap: 10px;
-      }
-      section h2::before {
-        content: counter(unit);
-        display: inline-flex; align-items: center; justify-content: center;
-        width: 30px; height: 30px; border-radius: 999px;
-        background: linear-gradient(135deg, var(--brand-2), var(--brand));
-        color: white; font-weight: 800; font-size: 14px;
-        box-shadow: 0 6px 16px rgba(0,0,0,.25);
-      }
+      section h2 { margin: 0 0 8px; font-size: clamp(20px, 3.5vw, 26px); display: inline-flex; align-items: center; gap: 10px; }
+      section h2::before { content: counter(unit); display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 999px; background: linear-gradient(135deg, var(--brand-2), var(--brand)); color: white; font-weight: 800; font-size: 14px; box-shadow: 0 6px 16px rgba(0,0,0,.25); }
       section h3 { margin-top: 10px; font-size: 18px; }
       ul { margin: 8px 0 0 1.2rem; }
       li + li { margin-top: 6px; }
 
-      /* Inline utilities */
       .muted { color: var(--muted); }
-      .pill {
-        display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.14);
-        background: rgba(255,255,255,0.04);font-size:12px;letter-spacing:.2px;color:var(--muted);
-        margin: 10px auto 0; justify-content: center;
-      }
+      .pill { display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04);font-size:12px;letter-spacing:.2px;color:var(--muted); margin: 10px auto 0; justify-content: center; }
       a { color: var(--brand); }
       a:focus-visible { box-shadow: var(--ring); border-radius: 10px; outline: none; }
 
-      /* Footer */
-      footer {
-        margin-top: 56px;
-        color: var(--muted);
-        text-align: center;
-        font-size: 14px;
-      }
-
-      /* Back to top */
-      .to-top {
-        position: fixed; right: 18px; bottom: 18px; z-index: 10;
-        border: 1px solid rgba(255,255,255,0.12); border-radius: 999px;
-        background: var(--surface);
-        padding: 10px 12px; cursor: pointer; display: none;
-      }
+      footer { margin-top: 56px; color: var(--muted); text-align: center; font-size: 14px; }
+      .to-top { position: fixed; right: 18px; bottom: 18px; z-index: 10; border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; background: var(--surface); padding: 10px 12px; cursor: pointer; display: none; }
       .to-top.show { display: inline-flex; }
       .to-top span { font-size: 13px; }
-
-      /* Skip link */
-      .skip-link { position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden; }
-      .skip-link:focus { left: 12px; top: 12px; width:auto; height:auto; padding:8px 12px; background: var(--surface); border-radius: 10px; box-shadow: var(--shadow); }
     </style>
   </head>
-
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-
     <div class="container">
       <header>
         <h1 class="site-title">Security & Risk Management</h1>
@@ -183,10 +88,7 @@
         <div class="pill" aria-hidden="true">MSc Cybersecurity • Peter Osifo</div>
       </header>
 
-      <!-- Sticky sentinel (to toggle shadow on TOC when stuck) -->
-      <div id="toc-sentinel" aria-hidden="true"></div>
-
-      <!-- Table of Contents / Units (centered & sticky) -->
+      <!-- Table of Contents / Units (centered & non-sticky) -->
       <nav class="toc card" aria-label="Table of contents">
         <h2>Units</h2>
         <div id="toc-links">
@@ -205,13 +107,10 @@
         </div>
       </nav>
 
-      <!-- Main content -->
-      <main id="main" class="content" tabindex="-1" aria-label="Main content">
-
+      <main id="main" aria-label="Main content">
         <!-- Unit 1 -->
         <section id="unit-1" class="card" aria-labelledby="u1-title">
           <h2 id="u1-title">Unit 1: An Introduction to Security and Risk Management</h2>
-
           <div class="card" style="margin-top:12px">
             <h3>Learning Outcome Reflection</h3>
             <p>
@@ -247,7 +146,6 @@
               technology‑driven contexts.
             </p>
           </div>
-
           <h3>Activities / Assignments</h3>
           <ul>
             <li><a href="/e-portfolio/assets/Artefacts/Initial_post_collab_discussion_1.docx" target="_blank" rel="noopener">Collaborative Discussion — Initial Post</a></li>
@@ -386,7 +284,7 @@
         <!-- Unit 9 -->
         <section id="unit-9" class="card" aria-labelledby="u9-title">
           <h2 id="u9-title">Unit 9: Risk, Business Continuity and Disaster Recovery</h2>
-        <h3>Learning Outcomes</h3>
+          <h3>Learning Outcomes</h3>
           <p>
             This unit deepened my understanding of how risk management underpins business continuity and disaster
             recovery (BC/DR). I examined the components of BC/DR frameworks and designed strategies that maintain
@@ -451,7 +349,6 @@
             <li><strong>Activity:</strong> Participate in a class or written debate with peers.</li>
           </ul>
         </section>
-
       </main>
 
       <footer class="footer" role="contentinfo">© <span id="year"></span> Peter Osifo — MSc Cybersecurity</footer>
@@ -461,48 +358,22 @@
 
     <script>
       // Footer year
-      (function(){
-        var node = document.getElementById('year');
-        if (node) node.textContent = new Date().getFullYear();
-      })();
+      (function(){ var node = document.getElementById('year'); if (node) node.textContent = new Date().getFullYear(); })();
 
-      // Scrollspy for TOC highlighting (top-centered)
+      // Scrollspy to underline TOC link for the visible section
       (function(){
         var links = Array.from(document.querySelectorAll('.toc a'));
         var sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-        var active; // currently highlighted link
-
-        function setActive(id){
-          if (active === id) return;
-          active = id;
-          links.forEach(a => a.setAttribute('aria-current', a.getAttribute('href') === '#' + id ? 'true' : 'false'));
-        }
-
-        var obs = new IntersectionObserver((entries) => {
-          entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id); });
-        }, { rootMargin: '0px 0px -70% 0px', threshold: 0.1 });
-
+        var active;
+        function setActive(id){ if (active===id) return; active=id; links.forEach(a => a.setAttribute('aria-current', a.getAttribute('href')==='#'+id ? 'true':'false')); }
+        var obs = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) setActive(e.target.id); }); }, { rootMargin:'0px 0px -70% 0px', threshold:0.1 });
         sections.forEach(sec => sec && obs.observe(sec));
       })();
 
-      // Sticky TOC shadow toggle via sentinel
-      (function(){
-        var toc = document.querySelector('.toc.card');
-        var sentinel = document.getElementById('toc-sentinel');
-        if (!toc || !sentinel) return;
-        var io = new IntersectionObserver(function(entries){
-          var e = entries[0];
-          if (!e.isIntersecting) toc.classList.add('stuck'); else toc.classList.remove('stuck');
-        });
-        io.observe(sentinel);
-      })();
-
-      // Back to top visibility + behaviour
+      // Back to top button
       (function(){
         var btn = document.getElementById('toTop');
-        window.addEventListener('scroll', function(){
-          if (window.scrollY > 600) btn.classList.add('show'); else btn.classList.remove('show');
-        });
+        window.addEventListener('scroll', function(){ if (window.scrollY > 600) btn.classList.add('show'); else btn.classList.remove('show'); });
         btn.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
       })();
     </script>
