@@ -188,15 +188,17 @@ Critically, these techniques are not without pitfalls. Poorly chosen distributio
           <h2 id="u10-title">Unit 10: Practical Applications and Issues in DR Implementations</h2>
           <h3>Learning Outcomes</h3>
           <ul>
-            <li>Identify common challenges in DR execution.</li>
-            <li>Evaluate DR strategies (hot site, cold site, cloud‑based recovery).</li>
-            <li>Assess post‑disaster lessons learned.</li>
+            <p>This week’s exploration of disaster recovery (DR) has enhanced my understanding of how theoretical frameworks translate into practical implementation. In practice, DR involves more than just data backup; it encompasses a comprehensive process of planning, design, testing, and maintenance to ensure business continuity after a disruptive event. Practical DR design begins with a clear understanding of an organisation’s critical systems and their interdependencies. Typical DR solutions range from on-premises backups and cold sites to more sophisticated options such as hot sites, mirrored data centres, and cloud-based recovery services. The choice of design depends largely on business needs, resource availability, and acceptable downtime, with the overall aim of balancing cost, complexity, and resilience.
+
+A crucial element in DR design is the definition of Recovery Point Objective (RPO) and Recovery Time Objective (RTO). RPO specifies the maximum tolerable data loss, while RTO defines how quickly systems must be restored after disruption. These metrics directly influence the type of technology and processes implemented. For example, a short RTO may require a fully redundant, geographically dispersed hot-site infrastructure, whereas a longer RTO could be achieved with a less expensive warm-site configuration. Similarly, a near-zero RPO may necessitate continuous data replication, while a higher RPO could rely on periodic backups. Through this analysis, I have realised that RPO and RTO values serve as the foundation for both the cost and complexity of DR solutions.
+
+Examining typical system solutions revealed that hot, warm, and cold standby models each offer unique advantages and trade-offs. Hot standbys provide immediate failover but are costly to maintain, while warm standbys offer a balance between cost and recovery speed. Cold standbys, though inexpensive, involve longer recovery times. Cloud-based DR has emerged as a flexible and scalable alternative, offering rapid provisioning and geographical redundancy at a lower cost. However, reliance on cloud providers introduces concerns over data sovereignty, bandwidth limitations, and third-party dependency.
+
+Reflecting critically, I recognise that all DR designs have inherent limitations. Budget constraints, infrastructure complexity, and evolving threat landscapes make it impossible to guarantee complete resilience. Furthermore, human factors—such as procedural errors and inadequate testing—remain persistent weaknesses. The effectiveness of any DR solution ultimately depends on ongoing evaluation, testing, and adaptation to technological and organisational change. This reinforces the principle that disaster recovery is not a one-time initiative but a continual process of improvement aimed at ensuring operational continuity and strategic resilience</p>
           </ul>
           <h3>Activities / Assignments</h3>
           <ul>
-            <li><strong>Exercise:</strong> Compare costs and benefits of DR solutions.</li>
-            <li><strong>Assignment:</strong> Analyse a failed DR implementation and propose improvements.</li>
-            <li><strong>Reflection:</strong> Discuss human and organisational issues in DR planning.</li>
+            <li><a href="/e-portfolio/assets/Artefacts/Quantitative Risk Modelling - Case Study.docx" target="_blank" rel="noopener">DR Solutions Design and Review</a></li>
           </ul>
         </section>
 
