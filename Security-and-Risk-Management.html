@@ -132,9 +132,17 @@ Finally, examining how security standards integrate into broader Security and Ri
           <h2 id="u7-title">Unit 7: Introduction to Quantitative Risk Modelling</h2>
           <h3>Learning Outcomes</h3>
           <ul>
-            <li>Distinguish qualitative versus quantitative risk assessment.</li>
-            <li>Apply probability and impact concepts.</li>
-            <li>Use simple quantitative models to assess risk.</li>
+            <p>
+              In consolidating this week’s material, I now view risk modelling through two complementary lenses. The first is qualitative modelling, which structures expert judgement (e.g., interviews, workshops, risk matrices, bow-tie analyses) to surface scenarios, impacts, and controls. The second is quantitative risk modelling (QRM), which expresses uncertainty with numbers—probabilities, loss distributions, and expected values—to compare options and optimise treatment.
+
+Within QRM, the major families I engaged with were multi-criteria decision-making (MCDM), Monte Carlo simulation, and Bayesian approaches. MCDM methods (such as AHP or TOPSIS) rank alternatives against weighted criteria when outcomes are multi-dimensional (e.g., security, cost, usability, compliance). Monte Carlo simulation propagates uncertainty by sampling from input distributions to generate a loss or performance distribution; it is well-suited to estimating annualised loss exposure and testing the effect of controls. Bayesian approaches model conditional dependencies and update beliefs with new evidence (e.g., Bayesian networks for attack paths, or posterior risk after deploying a control).
+
+Choosing among them depends on the problem structure and data. I would use qualitative modelling to frame threats, assumptions, and stakeholder risk appetite, then pivot to MCDM when trade-offs span incommensurate criteria and we need transparent weighting. Monte Carlo suits problems with measurable variability (frequency, magnitude) and when decision-makers need a full distribution, not a point estimate. Bayesian methods are preferred when prior knowledge is strong, evidence arrives sequentially, or dependencies between events are material.
+
+QRM’s core is representing uncertainty explicitly and testing decisions under that uncertainty. Principles include clarity of scope and metrics, calibrated inputs (or elicited priors), validation against reality, and sensitivity analysis. Antipatterns include false precision from coarse risk matrices, arbitrary weights in MCDM, assuming convenient distributions or independence in Monte Carlo, and unexamined or double-counted priors in Bayesian models.
+
+Finally, standards anchor these practices in governance. Frameworks such as ISO 31000, ISO/IEC 27001/27005 and NIST RMF provide a common language for risk context, criteria, and treatment plans, and ensure that model outputs flow into policy, control selection, assurance, and continuous improvement. In practice, I would align modelling choices to the standard’s process steps, document assumptions and evidence, and trace results to risk registers and control objectives, ensuring rigour without losing organisational relevance.
+            </p>
           </ul>
           <h3>Activities / Assignments</h3>
           <ul>
